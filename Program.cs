@@ -13,15 +13,15 @@
             int op = 0;
 
             //dados temporarios
-            nome[tl] = "Joao Marcos";
-            email[tl] = "joao@email.com";
-            tl++;
-            nome[tl] = "Maria Joana";
-            email[tl] = "maria@email.com";
-            tl++;
-            nome[tl] = "Erica Rodrigues";
-            email[tl] = "erica@email.com";
-            tl++;
+            // nome[tl] = "Joao Marcos";
+            // email[tl] = "joao@email.com";
+            // tl++;
+            // nome[tl] = "Maria Joana";
+            // email[tl] = "maria@email.com";
+            // tl++;
+            // nome[tl] = "Erica Rodrigues";
+            // email[tl] = "erica@email.com";
+            // tl++;
 
             while (op != 6)
             {
@@ -32,6 +32,7 @@
                         ExibirContatos(nome, email, tl);
                         break;
                     case 2:
+                        InserirContatos(ref nome, ref email, ref tl);
                         break;
                     case 3:
                         break;
@@ -69,6 +70,23 @@
             }
             Console.WriteLine("\nPressione qualquer tecla para voltar");
             Console.ReadKey();
+        }
+
+        static void InserirContatos(ref string[] nome, ref string[] email, ref int tl)
+        {
+            try
+            {
+                Console.WriteLine("Nome: ");
+                nome[tl] = Console.ReadLine();
+                Console.WriteLine("E-mail: ");
+                email[tl] = Console.ReadLine();
+                tl++;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro: " + e.Message);
+                
+            }            
         }
     }    
 }
