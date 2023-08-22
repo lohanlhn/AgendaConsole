@@ -1,0 +1,15 @@
+C:\Users\Lohan\code\AgendaConsole\bin\Debug\net7.0\AgendaConsole.exe
+C:\Users\Lohan\code\AgendaConsole\bin\Debug\net7.0\AgendaConsole.deps.json
+C:\Users\Lohan\code\AgendaConsole\bin\Debug\net7.0\AgendaConsole.runtimeconfig.json
+C:\Users\Lohan\code\AgendaConsole\bin\Debug\net7.0\AgendaConsole.dll
+C:\Users\Lohan\code\AgendaConsole\bin\Debug\net7.0\AgendaConsole.pdb
+C:\Users\Lohan\code\AgendaConsole\obj\Debug\net7.0\AgendaConsole.csproj.AssemblyReference.cache
+C:\Users\Lohan\code\AgendaConsole\obj\Debug\net7.0\AgendaConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lohan\code\AgendaConsole\obj\Debug\net7.0\AgendaConsole.AssemblyInfoInputs.cache
+C:\Users\Lohan\code\AgendaConsole\obj\Debug\net7.0\AgendaConsole.AssemblyInfo.cs
+C:\Users\Lohan\code\AgendaConsole\obj\Debug\net7.0\AgendaConsole.csproj.CoreCompileInputs.cache
+C:\Users\Lohan\code\AgendaConsole\obj\Debug\net7.0\AgendaConsole.dll
+C:\Users\Lohan\code\AgendaConsole\obj\Debug\net7.0\refint\AgendaConsole.dll
+C:\Users\Lohan\code\AgendaConsole\obj\Debug\net7.0\AgendaConsole.pdb
+C:\Users\Lohan\code\AgendaConsole\obj\Debug\net7.0\AgendaConsole.genruntimeconfig.cache
+C:\Users\Lohan\code\AgendaConsole\obj\Debug\net7.0\ref\AgendaConsole.dll
