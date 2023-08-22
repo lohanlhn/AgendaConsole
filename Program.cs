@@ -85,7 +85,7 @@
             catch (Exception e)
             {
                 Console.WriteLine("Erro: " + e.Message);
-                
+                Console.ReadKey();
             }            
         }
     }    
