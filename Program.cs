@@ -13,18 +13,8 @@ namespace AgendaConsole
 
             //tamanho logico
             int tl = 0;
-            int op = 0;            
-
-            //dados temporarios
-            // nome[tl] = "Joao Marcos";
-            // email[tl] = "joao@email.com";
-            // tl++;
-            // nome[tl] = "Maria Joana";
-            // email[tl] = "maria@email.com";
-            // tl++;
-            // nome[tl] = "Erica Rodrigues";
-            // email[tl] = "erica@email.com";
-            // tl++;
+            int op = 0;
+            int pos = 0;
 
             while (op != 6)
             {
@@ -41,13 +31,26 @@ namespace AgendaConsole
                         AlterarContatos(ref nome, ref email, ref tl);
                         break;
                     case 4:
+                        Console.WriteLine("Excluir um contato");
+                        Console.Write("E-mail: ");
+                        emailContato = Console.ReadLine();
+                        if (ExcluirContato(ref nome, ref email, ref tl, emailContato))
+                        {
+                            Console.WriteLine("Contato excluido");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Console não encontrado");
+                        }
+                        Console.ReadKey();                        
+                        
                         break;
                     case 5:
                         Console.WriteLine("Localizar um contato");
                         Console.Write("E-mail: ");
                         emailContato = Console.ReadLine();
                         
-                        int pos = LocalizarContatos(email, tl, emailContato);
+                        pos = LocalizarContatos(email, tl, emailContato);
 
                         if (pos != -1)
                         {
@@ -106,12 +109,13 @@ namespace AgendaConsole
                 if (pos == -1 )
                 {
                     tl++;
+                    Console.WriteLine("Contato inserido");                    
                 }
                 else
                 {
                     Console.WriteLine("Contato já cadastrado");
-                    Console.ReadKey();
                 }
+                Console.ReadKey();
             }
             catch (Exception e)
             {
@@ -138,41 +142,70 @@ namespace AgendaConsole
         {
             try
             {
-                Console.WriteLine("Alterar contato");                
-                Console.Write("E-mail: ");
-                string emailContato = Console.ReadLine();
-                int pos = LocalizarContatos(email, tl, emailContato);
-                
-                if (pos != -1)
+                if (tl >= 200)
                 {
-                    Console.WriteLine("Novos dados do contato");
-                    Console.Write("Nome: ");
-                    string novoNome = Console.ReadLine();
-                    Console.Write("email: ");
-                    string novoEmail = Console.ReadLine();
-
-                    if (LocalizarContatos(email, tl, novoEmail) == -1 || novoEmail == emailContato)
-                    {
-                        nome[pos] = novoNome;
-                        email[pos] = novoEmail;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Já existe um contato com este e-mail");
-                        Console.ReadKey();
-                    }                    
+                    Console.WriteLine("Número maximo de contatos atingido");
+                    Console.ReadKey();
                 }
                 else
                 {
-                    Console.WriteLine("Contato não encontrado");
-                    Console.ReadKey();
-                }
+                    Console.WriteLine("Alterar contato");
+                    Console.Write("E-mail: ");
+                    string emailContato = Console.ReadLine();
+                    int pos = LocalizarContatos(email, tl, emailContato);
+
+                    if (pos != -1)
+                    {
+                        Console.WriteLine("Novos dados do contato");
+                        Console.Write("Nome: ");
+                        string novoNome = Console.ReadLine();
+                        Console.Write("email: ");
+                        string novoEmail = Console.ReadLine();
+
+                        if (LocalizarContatos(email, tl, novoEmail) == -1 || novoEmail == emailContato)
+                        {
+                            nome[pos] = novoNome;
+                            email[pos] = novoEmail;
+                            Console.WriteLine("Contato alterado");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Já existe um contato com este e-mail");
+                        }
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Contato não encontrado");
+                        Console.ReadKey();
+                    }
+                }                
             }
             catch (Exception e)
             {
                 Console.WriteLine("Erro: " + e.Message);
                 Console.ReadKey();
             }
+        }
+
+        static bool ExcluirContato(ref string[] nome, ref string[] email, ref int tl, string emailContato)
+        {
+            bool excluiu = false;
+            int pos = -1;
+            pos = LocalizarContatos(email, tl, emailContato);
+
+            if (pos != -1)
+            {
+                for (int i = pos; i < tl-1; i++)
+                {
+                    nome[i] = nome[i+1];
+                    email[i] = email[i + 1];
+                }
+                excluiu = true;
+                tl--;
+            }
+            return excluiu;
+
         }
     }    
 }
