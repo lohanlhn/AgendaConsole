@@ -1,4 +1,6 @@
-﻿namespace AgendaConsole
+﻿using System.Net.Security;
+
+namespace AgendaConsole
 {
     internal class Program
     {
@@ -7,10 +9,11 @@
             //armazena os dados da agenda
             string[] nome = new string[200];
             string[] email = new string[200];
+            string emailContato = "";
 
             //tamanho logico
             int tl = 0;
-            int op = 0;
+            int op = 0;            
 
             //dados temporarios
             // nome[tl] = "Joao Marcos";
@@ -39,6 +42,22 @@
                     case 4:
                         break;
                     case 5:
+                        Console.WriteLine("Localizar um contato");
+                        Console.Write("E-mail: ");
+                        emailContato = Console.ReadLine();
+                        
+                        int pos = LocalizarContatos(email, tl, emailContato);
+
+                        if (pos != -1)
+                        {
+                            Console.WriteLine("Nome: {0} - E-mail: {1}", nome[pos], email[pos]);                            
+                        }
+                        else
+                        {
+                            Console.WriteLine("Contato não encontrado");
+                        }
+                        Console.ReadKey();
+
                         break;
                 }
             }            
@@ -75,18 +94,42 @@
         static void InserirContatos(ref string[] nome, ref string[] email, ref int tl)
         {
             try
-            {
+            {                
                 Console.WriteLine("Nome: ");
                 nome[tl] = Console.ReadLine();
                 Console.WriteLine("E-mail: ");
                 email[tl] = Console.ReadLine();
-                tl++;
+                int pos = LocalizarContatos(email, tl, email[tl]);
+                
+                if (pos == -1 )
+                {
+                    tl++;
+                }
+                else
+                {
+                    Console.WriteLine("Contato já cadastrado");
+                    Console.ReadKey();
+                }
             }
             catch (Exception e)
             {
                 Console.WriteLine("Erro: " + e.Message);
                 Console.ReadKey();
             }            
+        }
+
+        static int LocalizarContatos(string[] email, int tl, string emailContato)
+        {            
+            int pos = -1;
+            int i = 0;
+
+            while (i < tl && email[i] != emailContato)
+            {
+                i++;
+            }
+            
+            if (i < tl) pos = i;
+            return pos;
         }
     }    
 }
