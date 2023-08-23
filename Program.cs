@@ -16,6 +16,10 @@ namespace AgendaConsole
             int op = 0;
             int pos = 0;
 
+            BackupAgenda.nomeArquivo = "dados.txt";
+            BackupAgenda.RestaurarDados(ref nome, ref email, ref tl); 
+
+
             while (op != 6)
             {
                 op = ExibirMenu();
@@ -64,8 +68,9 @@ namespace AgendaConsole
 
                         break;
                 }
-            }            
+            } 
 
+            BackupAgenda.SalvarDados(ref nome, ref email, ref tl);
         }
 
         static int ExibirMenu()
