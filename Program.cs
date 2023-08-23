@@ -38,6 +38,7 @@ namespace AgendaConsole
                         InserirContatos(ref nome, ref email, ref tl);
                         break;
                     case 3:
+                        AlterarContatos(ref nome, ref email, ref tl);
                         break;
                     case 4:
                         break;
@@ -75,7 +76,7 @@ namespace AgendaConsole
             Console.WriteLine("Excluir contato - 4");
             Console.WriteLine("Localizar contato - 5");
             Console.WriteLine("Sair - 6");
-            Console.WriteLine("Opção: ");
+            Console.Write("Opção: ");
             op = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
             return op;
@@ -94,10 +95,11 @@ namespace AgendaConsole
         static void InserirContatos(ref string[] nome, ref string[] email, ref int tl)
         {
             try
-            {                
-                Console.WriteLine("Nome: ");
+            {
+                Console.WriteLine("Alterar contato");
+                Console.Write("Nome: ");
                 nome[tl] = Console.ReadLine();
-                Console.WriteLine("E-mail: ");
+                Console.Write("E-mail: ");
                 email[tl] = Console.ReadLine();
                 int pos = LocalizarContatos(email, tl, email[tl]);
                 
@@ -130,6 +132,47 @@ namespace AgendaConsole
             
             if (i < tl) pos = i;
             return pos;
+        }
+
+        static void AlterarContatos(ref string[] nome, ref string[] email, ref int tl)
+        {
+            try
+            {
+                Console.WriteLine("Alterar contato");                
+                Console.Write("E-mail: ");
+                string emailContato = Console.ReadLine();
+                int pos = LocalizarContatos(email, tl, emailContato);
+                
+                if (pos != -1)
+                {
+                    Console.WriteLine("Novos dados do contato");
+                    Console.Write("Nome: ");
+                    string novoNome = Console.ReadLine();
+                    Console.Write("email: ");
+                    string novoEmail = Console.ReadLine();
+
+                    if (LocalizarContatos(email, tl, novoEmail) == -1 || novoEmail == emailContato)
+                    {
+                        nome[pos] = novoNome;
+                        email[pos] = novoEmail;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Já existe um contato com este e-mail");
+                        Console.ReadKey();
+                    }                    
+                }
+                else
+                {
+                    Console.WriteLine("Contato não encontrado");
+                    Console.ReadKey();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro: " + e.Message);
+                Console.ReadKey();
+            }
         }
     }    
 }
