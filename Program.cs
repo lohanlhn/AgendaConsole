@@ -10,31 +10,31 @@ namespace AgendaConsole
             string[] nome = new string[200];
             string[] email = new string[200];
             string emailContato = "";
+            string op = "";
 
             //tamanho logico
             int tl = 0;
-            int op = 0;
             int pos = 0;
 
             BackupAgenda.nomeArquivo = "dados.txt";
             BackupAgenda.RestaurarDados(ref nome, ref email, ref tl); 
 
 
-            while (op != 6)
+            while (op != "6")
             {
                 op = ExibirMenu();
                 switch (op)
                 {
-                    case 1:
+                    case "1":
                         ExibirContatos(nome, email, tl);
                         break;
-                    case 2:
+                    case "2":
                         InserirContatos(ref nome, ref email, ref tl);
                         break;
-                    case 3:
+                    case "3":
                         AlterarContatos(ref nome, ref email, ref tl);
                         break;
-                    case 4:
+                    case "4":
                         Console.WriteLine("Excluir um contato");
                         Console.Write("E-mail: ");
                         emailContato = Console.ReadLine();
@@ -49,7 +49,7 @@ namespace AgendaConsole
                         Console.ReadKey();                        
                         
                         break;
-                    case 5:
+                    case "5":
                         Console.WriteLine("Localizar um contato");
                         Console.Write("E-mail: ");
                         emailContato = Console.ReadLine();
@@ -67,15 +67,21 @@ namespace AgendaConsole
                         Console.ReadKey();
 
                         break;
+                    case "6":
+                        break;
+                    default:
+                        Console.WriteLine("Opção desconhecida, por favor escolha a opção desejada");
+                        Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+                        Console.ReadKey();
+                        break;
                 }
-            } 
+            }             
 
             BackupAgenda.SalvarDados(ref nome, ref email, ref tl);
         }
 
-        static int ExibirMenu()
-        {
-            int op = 0;
+        static string ExibirMenu()
+        {            
             Console.Clear();
             Console.WriteLine("Agenda Modo Console");
             Console.WriteLine("Exibir dados - 1");
@@ -85,7 +91,7 @@ namespace AgendaConsole
             Console.WriteLine("Localizar contato - 5");
             Console.WriteLine("Sair - 6");
             Console.Write("Opção: ");
-            op = Convert.ToInt32(Console.ReadLine());
+            string op = Console.ReadLine();
             Console.Clear();
             return op;
         }
