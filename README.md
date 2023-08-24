@@ -1,6 +1,6 @@
-﻿# Agenda Console .NET
+﻿# AgendaConsole
 
-Este é um projeto simples de uma agenda em C# que utiliza arrays para armazenar os contatos e salva os dados em um arquivo de texto. Este projeto foi criado com o objetivo de relembrar alguns princípios fundamentais do C# após um período sem utilizar a linguagem. 
+Este é um projeto simples de uma agenda em C# que utiliza arrays para armazenar os contatos e salva os dados em um arquivo de texto. Este projeto foi criado com o objetivo de relembrar alguns princípios básicos do C# (por conta disso o código não está muito polido nem foi utilizado POO) após um período sem utilizar a linguagem.
 
 ## Funcionalidades
 
@@ -16,7 +16,7 @@ Este é um projeto simples de uma agenda em C# que utiliza arrays para armazenar
 1. Clone este repositório em seu ambiente de desenvolvimento:
 
 ```
-git clone https://github.com/seu-usuario/agenda-console-dotnet.git
+git clone https://github.com/lohanlhn/AgendaConsole.git
 ```
 
 2. Abra o projeto em sua IDE preferida (como o Visual Studio).
