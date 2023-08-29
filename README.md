@@ -29,10 +29,6 @@ git clone https://github.com/lohanlhn/AgendaConsole.git
 
 Contribuições são bem-vindas! Se você quiser adicionar novas funcionalidades, melhorar a interface do usuário ou corrigir qualquer problema, sinta-se à vontade para abrir um pull request.
 
-## Licença
-
-Este projeto é distribuído sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter mais informações.
-
 ---
 
 *Quando os caminhos se confundem, é necessário voltar ao começo.*
